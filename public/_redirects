@@ -1,3 +1,10 @@
-# Map subdomains directly to internal Next.js song routes
-https://mydreamgirl.clqit.in/*   /dream-girl/:splat   200!
-https://theeasyhard.clqit.in/*   /easy-hard/:splat    200!
+# Serve static Next.js assets directly (prevents CSS/JS 404s)
+/_next/*  /_next/:splat  200
+
+# Map subdomain root directly to song routes
+https://mydreamgirl.clqit.in/  /dream-girl  200!
+https://theeasyhard.clqit.in/  /easy-hard   200!
+
+# Wildcard catch-all for deep paths on subdomains
+https://mydreamgirl.clqit.in/*  /dream-girl/:splat  200!
+https://theeasyhard.clqit.in/*  /easy-hard/:splat   200!
