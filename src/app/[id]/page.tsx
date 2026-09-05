@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   // Automate host detection from incoming HTTP headers
   const headersList = await headers();
-  const host = headersList.get('host') || 'clqit.netlify.app';
+  const host = headersList.get('host') || 'musicplayah.clqit.in';
   const protocol = headersList.get('x-forwarded-proto') || 'https';
   const currentDomain = `${protocol}://${host}`;
 
