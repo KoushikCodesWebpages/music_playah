@@ -1,0 +1,49 @@
+Admin@Jothi-Arul-Trust MINGW64 ~/OneDrive/Documents/Desktop/koushikprojects/Music_playah
+$ cmd //c tree //f
+Folder PATH listing
+Volume serial number is 00000014 1202:6055
+C:.
+│   .gitignore
+│   AGENTS.md
+│   CLAUDE.md
+│   eslint.config.mjs
+│   next-env.d.ts
+│   next.config.ts
+│   package-lock.json
+│   package.json
+│   postcss.config.mjs
+│   README.md
+│   tsconfig.json
+│   
+├───public
+│       desktop.png
+│       file.svg
+│       globe.svg
+│       lyrics.json
+│       mobile.png
+│       music.png
+│       next.svg
+│       vercel.svg
+│       window.svg
+│       
+└───src
+    ├───app
+    │   │   favicon.ico
+    │   │   globals.css
+    │   │   layout.tsx
+    │   │   page.tsx
+    │   │   
+    │   ├───components
+    │   │       ActionButton.tsx
+    │   │       LyricsPopup.tsx
+    │   │       SongPage.tsx
+    │   │       
+    │   ├───mydreamgirl
+    │   │       page.tsx
+    │   │       
+    │   ├───song
+    │   └───[id]
+    │           page.tsx
+    │           
+    └───config
+            songs.ts
