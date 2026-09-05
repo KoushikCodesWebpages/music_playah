@@ -18,11 +18,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!song) return { title: 'Song Not Found' };
 
-  // Automate host detection from incoming HTTP headers
   const headersList = await headers();
   const host = headersList.get('host') || 'musicplayah.clqit.in';
   const protocol = headersList.get('x-forwarded-proto') || 'https';
   const currentDomain = `${protocol}://${host}`;
+
+  const imageUrl = song.ogImage.startsWith('http')
+    ? song.ogImage
+    : `${currentDomain}${song.ogImage.startsWith('/') ? '' : '/'}${song.ogImage}`;
 
   return {
     metadataBase: new URL(currentDomain),
@@ -36,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'music.song',
       images: [
         {
-          url: song.desktopBg, // Automatically turns into https://[subdomain]/backgrounds/...
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: `${song.songTitle} Cover`,
@@ -47,7 +50,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: `${song.songTitle} — ${song.artistName}`,
       description: song.quoteText,
-      images: [song.desktopBg],
+      images: [imageUrl],
     },
   };
 }
