@@ -1,0 +1,3 @@
+# Map subdomains directly to internal Next.js song routes
+https://mydreamgirl.clqit.in/*   /dream-girl/:splat   200!
+https://theeasyhard.clqit.in/*   /easy-hard/:splat    200!
