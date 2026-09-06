@@ -47,3 +47,26 @@ C:.
     │           
     └───config
             songs.ts
+
+
+
+Step 1: Prepare Your 3 Assets (public/ directory)Create and place your 3 image assets into public/backgrounds/:desktop_[slug].jpg (or .png) — Desktop background artwork.mobile_[slug].jpg (or .png) — Mobile background artwork.og_[slug].jpg — Social preview image (1200x630 JPG, strictly under 300 KB).Step 2: Update SONGS_CATALOG (src/config/songs.ts)Add the new song entry to your song catalog using its slug key:TypeScript'your-song-slug': {
+  id: 'your-song-slug',
+  songTitle: 'Song Name',
+  artistName: 'Musicplayah',
+  embedUrl: 'https://www.bandlab.com/embed/?id=...',
+  quoteText: 'Your lyric or quote here...',
+  lyricsFile: '/lyrics/your_song.json',
+  desktopBg: '/backgrounds/desktop_your_song.jpg',
+  mobileBg: '/backgrounds/mobile_your_song.jpg',
+  ogImage: '/backgrounds/og_your_song.jpg',
+},
+Step 3: Map Subdomain in Middleware (src/middleware.ts)Add the subdomain mapping inside the subdomainMap dictionary in your middleware:TypeScriptconst subdomainMap: Record<string, string> = {
+  'mydreamgirl': 'dream-girl',
+  'theeasyhard': 'easy-hard',
+  'yoursongsubdomain': 'your-song-slug', // 👈 Add new mapping here
+};
+Step 4: Configure DNS & Netlify AliasDNS Registrar (Hostinger/Cloudflare):Add a CNAME record:Host/Name: yoursongsubdomainTarget: musicplayah.netlify.app (No https:// or trailing slashes)Netlify Dashboard:Go to Site configuration $\rightarrow$ Domain management.Click Add domain alias and enter yoursongsubdomain.clqit.in.Step 5: Deploy & VerifyPush your code to GitHub:Bashgit add .
+git commit -m "feat: add new song track and subdomain route"
+git push origin main
+Netlify will automatically build the site and issue an SSL certificate for the new subdomain alias within 1–2 minutes.Test link sharing on WhatsApp by appending ?v=1 (e.g., [https://yoursongsubdomain.clqit.in/?v=1](https://yoursongsubdomain.clqit.in/?v=1)) to bypass cached previews. 
